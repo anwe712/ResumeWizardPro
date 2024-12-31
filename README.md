@@ -1,65 +1,45 @@
-# Resume Builder with AI-Generated LaTeX Code
+# Resume Wizard AI
 
-This project is a simple web application that allows users to create resumes by filling out a form. The form data is sent to a backend server, which uses OpenAI's API to generate LaTeX code for the resume based on the provided information.
+**Resume Wizard AI** is a web-based tool that allows users to generate a professional resume from basic input data. Using **Flask**, the tool provides a simple form where users input their personal and professional details, which are then curated and turned into a polished resume in **PDF** format.
 
-## Features
+### Key Features
+- Input personal details like name, email, phone, skills, work experience, education, and projects.
+- Generate a professional resume in PDF format.
+- Uses **WeasyPrint** for converting HTML content into a PDF.
+- Can be integrated with AI models (like Spacy or others) to enhance and curate the input data before generating the resume.
 
-- User-friendly form for inputting resume information
-- Backend server to handle form submissions and interact with OpenAI API
-- AI-generated LaTeX code for resumes
+---
+
+## Table of Contents
+1. [Technologies Used](#technologies-used)
+2. [Installation](#installation)
+3. [How to Run](#how-to-run)
+4. [Folder Structure](#folder-structure)
+5. [Contributing](#contributing)
+6. [License](#license)
+
+---
 
 ## Technologies Used
+- **Flask**: A lightweight Python web framework for serving the app.
+- **WeasyPrint**: A Python library for rendering HTML to PDF.
+- **Spacy** (optional): Natural language processing library for curating input data.
+- **HTML/CSS**: Used for creating the form and styling the webpage.
 
-- HTML
-- CSS
-- JavaScript
-- Node.js
-- Express.js
-- Axios
-- OpenAI API
+---
 
-## Prerequisites
+## Installation
 
-- Node.js installed
-- OpenAI API key
+### Prerequisites:
+1. **Python 3.x**: Make sure Python is installed on your system.
+2. **pip**: Ensure that pip (Python's package installer) is available for installing dependencies.
 
-## Setup and Installation
+### Steps to Install:
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/ResumeWizardAI.git
+   cd ResumeWizardAI
 
-1. Clone the repository:
+2. ```bash 
+    pip install -r requirements.txt
 
-    ```sh
-    git clone https://github.com/your-username/resume-builder.git
-    cd resume-builder
-    ```
-
-2. Install the necessary dependencies:
-
-    ```sh
-    npm install
-    ```
-
-3. Create a `.env` file in the root directory and add your OpenAI API key:
-
-    ```env
-    AI_API_KEY=your_openai_api_key_here
-    ```
-
-4. Start the backend server:
-
-    ```sh
-    node server.js
-    ```
-
-    The server will run on `http://localhost:8088`.
-
-5. Open the `index.html` file in your browser to view the form.
-
-## Project Structure
-
-```plaintext
-.
-├── index.html
-├── script.js
-├── styles.css
-├── server.js
-└── README.md
