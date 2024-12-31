@@ -63,7 +63,7 @@ def generate_resume():
         </html>
         """
 
-        # Generate the PDF using 
+        # Generate the PDF using weasyprint
         html = HTML(string=html_content)
         pdf_file_path = "resume.pdf"
         html.write_pdf(pdf_file_path)
