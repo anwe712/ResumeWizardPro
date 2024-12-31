@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Wizard AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Reset some default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4a90e2;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .form-group button {
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #357ABD;
+        }
+
+        .error {
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .success {
+            color: #2ecc71;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Resume Wizard AI</h1>
+        <form id="resumeForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="skills">Skills (comma separated)</label>
+                <input type="text" id="skills" name="skills" required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Work Experience</label>
+                <textarea id="experience" name="experience" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="education">Education</label>
+                <textarea id="education" name="education" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="projects">Projects</label>
+                <textarea id="projects" name="projects" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Generate Resume</button>
+            </div>
+        </form>
+        <div id="responseMessage"></div>
+    </div>
+
+    <script>
+        document.getElementById('resumeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                skills: document.getElementById('skills').value.split(','),
+                experience: document.getElementById('experience').value,
+                education: document.getElementById('education').value,
+                projects: document.getElementById('projects').value
+            };
+
+            // Show loading message
+            document.getElementById('responseMessage').innerHTML = 'Generating resume...';
+
+            fetch('http://127.0.0.1:5000/generate-resume', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'resume.pdf';
+                link.click();
+                document.getElementById('responseMessage').innerHTML = '';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('responseMessage').innerHTML = 'There was an error generating your resume. Please try again.';
+                document.getElementById('responseMessage').classList.add('error');
+            });
+        });
+    </script>
+
+</body>
+</html>
