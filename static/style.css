@@ -1,69 +1,56 @@
-/* Global Reset */
-@import url('https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+/* Import Modern Professional Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body Styling */
 body {
-    font-family: 'krub';
-    background: #f7f7f7;
-    color: #000000;
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f6f9;
+    color: #1a1a1a;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    padding: 20px;
+    padding: 40px 20px;
+    min-height: 100vh;
 }
 
-/* Container */
+/* Main Container */
 .container {
-    background: #ffffff;
-    padding: 40px 50px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: #ffffffca;
+    padding: 48px 60px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     width: 100%;
-    max-width: 800px;
-    transition: transform 0.3s ease-in-out;
-    animation: fadeIn 0.5s ease-in-out;
+    max-width: 820px;
+    
+    transition: transform 0.3s ease;
 }
 
-/* Hover Effect */
-.container:hover {
-    transform: scale(1.01);
-}
 
-/* Fade In Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* Heading */
 h1 {
     text-align: center;
     font-size: 36px;
-    margin-bottom: 30px;
     font-weight: 600;
-    color: #333;
+    color: #2d2d2d;
+    margin-bottom: 40px;
 }
 
-/* Form Styles */
+/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
 }
 
-/* Form Groups */
+/* Form Group */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -72,81 +59,81 @@ form {
 /* Labels */
 label {
     font-size: 16px;
-    margin-bottom: 8px;
     font-weight: 500;
-    color: #666;
+    margin-bottom: 8px;
+    color: #444;
 }
 
-/* Input & Textarea Styles */
+/* Inputs & Textareas */
 input[type="text"],
 input[type="email"],
 textarea {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    padding: 16px 14px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
     font-size: 16px;
-    background-color: #f9f9f9;
+    background-color: #fafafa;
+    transition: border-color 0.3s, background-color 0.3s;
     color: #333;
-    transition: all 0.3s ease;
     outline: none;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
+input:focus,
 textarea:focus {
     border-color: #007bff;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
-/* Textarea */
+/* Textarea Specific */
 textarea {
-    min-height: 120px;
+    min-height: 130px;
     resize: vertical;
 }
 
 /* Voice Button */
-button[type="button"].voice-btn {
+button.voice-btn {
     background-color: #007bff;
-    color: #fff;
+    color: #ffffff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px;
     font-size: 18px;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
     align-self: flex-end;
-    margin-top: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 12px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-button[type="button"].voice-btn:hover {
+button.voice-btn:hover {
     background-color: #0056b3;
     transform: scale(1.1);
 }
 
 /* Submit Button */
 button[type="submit"] {
-    background-color: #29a310;
-    color: #fff;
+    background-color: #009e60;
+    color: #ffffff;
     border: none;
-    padding: 15px 30px;
+    padding: 16px 36px;
     font-size: 18px;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
     align-self: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
 }
 
 button[type="submit"]:hover {
-    background-color: #028320;
+    background-color: #027b4a;
     transform: translateY(-2px);
 }
 
 /* Response Message */
 #responseMessage {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 24px;
     font-size: 16px;
     font-weight: 500;
 }
@@ -159,35 +146,97 @@ button[type="submit"]:hover {
     color: #2ecc71;
 }
 
-/* Mobile Responsiveness */
+/* Responsive Design */
 @media (max-width: 600px) {
     .container {
-        padding: 20px;
-        width: 100%;
+        padding: 28px 24px;
     }
 
     h1 {
         font-size: 28px;
     }
 
-    input[type="text"],
-    input[type="email"],
+    input,
     textarea {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     button[type="submit"] {
         font-size: 16px;
-        padding: 12px 25px;
+        padding: 14px 28px;
     }
 
-    button[type="button"].voice-btn {
-        padding: 8px 15px;
+    button.voice-btn {
+        padding: 10px;
         font-size: 16px;
     }
 }
 
+/* Adjusted Heading */
+h1 {
+    text-align: center;
+    font-size: 30px; /* 👈 Slightly smaller heading */
+    font-weight: 600;
+    color: #2d2d2d;
+    margin-bottom: 32px;
+}
 
+/* Form Adjustments */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* 👈 Less vertical gap */
+}
 
+/* Inputs & Textareas */
+input[type="text"],
+input[type="email"],
+textarea {
+    padding: 12px 14px; /* 👈 Slimmer fields */
+    font-size: 15px;
+    border-radius: 8px;
+}
 
-/* animation */
+/* Textarea */
+textarea {
+    min-height: 100px;
+}
+
+/* Buttons */
+button[type="submit"] {
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+button.voice-btn {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Mobile Responsiveness Adjusted */
+@media (max-width: 600px) {
+    .container {
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    input,
+    textarea {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    button[type="submit"] {
+        font-size: 15px;
+        padding: 12px 22px;
+    }
+
+    button.voice-btn {
+        padding: 8px;
+        font-size: 15px;
+    }
+}
